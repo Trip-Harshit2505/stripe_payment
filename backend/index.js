@@ -1,7 +1,4 @@
 const express = require("express");
-const stripe = require("stripe")(
-  process.env.STRIPE_SK
-);
 const bodyparser = require("body-parser");
 const Cart = require("./models/Cart");
 const cors = require("cors");
@@ -13,6 +10,10 @@ const dotenv = require("dotenv");
 dotenv.config({
   path: ".env",
 });
+
+const stripe = require("stripe")(
+  process.env.STRIPE_SK
+);
 
 const app = express();
 

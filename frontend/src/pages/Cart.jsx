@@ -2,16 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { FaTrashCan } from "react-icons/fa6";
-import dotenv from "dotenv";
 
 export default function Cart() {
   const location = useLocation();
   const cart = location.state?.cart || [];
   const [loading, setLoading] = useState(false);
 
-  dotenv.config({
-    path: ".env"
-  });
 
   //   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -24,7 +20,7 @@ export default function Cart() {
 
     // Load Stripe using your publishable key
     const stripe = await loadStripe(
-      process.env.STRIPE_PK
+      import.meta.env.VITE_STRIPE_PK
     );
 
     try {
